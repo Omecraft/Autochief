@@ -77,7 +77,7 @@ class Addmeal extends StatelessWidget {
                 border: Border.all(
                   color: const Color(0xFFffb17a),
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -160,7 +160,7 @@ class Addmeal extends StatelessWidget {
                 border: Border.all(
                   color: const Color(0xFFffb17a),
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

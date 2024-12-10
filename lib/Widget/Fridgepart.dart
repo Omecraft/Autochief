@@ -13,7 +13,7 @@ class Fridgepart extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: const Color(0xFF676f9d),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(5),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,6 +32,20 @@ class Fridgepart extends StatelessWidget {
               ]
             ),),
           ),
+          Container(
+            height: 1,
+            
+            decoration: const BoxDecoration(
+              color:  Color(0xFFffb17a),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 2.0,
+                  color: Color(0xFFffb17a),
+                  offset: Offset(0, 0.0),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

@@ -13,7 +13,12 @@ class Fridgepart extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: const Color(0xFF676f9d),
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(25),
+          bottomLeft: Radius.circular(25),
+          topLeft: Radius.circular(5),
+          topRight: Radius.circular(5),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,3 +1,4 @@
+import 'package:autochiefv2/Data/data_ingredient.dart';
 import 'package:autochiefv2/Data/datameal.dart';
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
@@ -14,7 +15,7 @@ class Mealdatabase extends ChangeNotifier{
     final dir = await getApplicationDocumentsDirectory();
     // ignore: unused_local_variable
     isar = await Isar.open(
-      [DataMealSchema],
+      [DataMealSchema, DataIngredientSchema],
       directory: dir.path);
       for (var i = 0; i < 200; i++) {
         print("init");
@@ -95,4 +96,38 @@ class Mealdatabase extends ChangeNotifier{
     }
     print("in");
   }
+
+  final List<DataIngredient> ingredients = [];
+    
+    Future<void> readingredients() async {
+    // Recupération des plats dans la base de données
+    final recupedingredients = await isar.dataIngredients.where().findAll();
+
+    // Mise a jour de la liste des plats
+    ingredients.clear();
+    ingredients.addAll(recupedingredients);
+
+    // Notification des listeners(Widgets qui l'affichent)(C'est comme un setState)
+    notifyListeners();
+    }
+    Future<void> addIngredient(DataIngredient ingredient) async {
+    // Creation du plat a ajouter
+    final newIngredient = DataIngredient()
+      ..name = ingredient.name
+      ..image = ingredient.image
+      ..category = ingredient.category
+      ..unit = ingredient.unit
+      ..quantity = ingredient.quantity;
+
+    await isar.writeTxn(
+      () async{
+        await isar.dataIngredients.put(newIngredient);
+      });
+    }
+    Future<void> deleteIngredient(DataIngredient ingredient) async {
+    await isar.writeTxn(
+      () async{
+        await isar.dataIngredients.delete(ingredient.id);
+      });
+    }
 }

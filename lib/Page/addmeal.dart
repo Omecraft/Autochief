@@ -165,9 +165,9 @@ class Addmeal extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  controller: mealname,
+                  controller: mealdescription,
                   decoration: const InputDecoration(
-                  hintText: 'Meal Name',
+                  hintText: 'Description',
                   hintStyle: TextStyle(
                     color: Color(0xFFffb17a),
                     fontSize: 20,

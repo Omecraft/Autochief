@@ -1,4 +1,5 @@
 import 'package:autochiefv2/Widget/Fridgepart.dart';
+import 'package:autochiefv2/Widget/fridgepartrow.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,7 +9,7 @@ class Fridge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2d3250),
+      backgroundColor: const Color(0xFF2d3250),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -31,8 +32,8 @@ class Fridge extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Fridgepart(namecategory: "Fruit"),
-          )
-
+          ),
+          Fridgepartrow(name1: "Juice", name2: "Spices")
            
           ],
         ),

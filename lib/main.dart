@@ -1,3 +1,4 @@
+
 import 'package:autochiefv2/Data/mealdatabase.dart';
 import 'package:autochiefv2/Page/addmeal.dart';
 import 'package:autochiefv2/Page/crysnav.dart';
@@ -14,11 +15,16 @@ void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
   await Mealdatabase.init();
+  
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => Mealdatabase(),
-      child: const MyApp(),)
+    MultiProvider(
+      providers: [
+      ChangeNotifierProvider(create: (context) => Mealdatabase()),
+      
+      ],
+      child: const MyApp(),
+    )
     );
 }
 

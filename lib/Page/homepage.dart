@@ -1,4 +1,5 @@
 
+import 'package:autochiefv2/Widget/featuredmealbis.dart';
 import 'package:autochiefv2/Widget/pie_chart.dart';
 import 'package:autochiefv2/Widget/featuredmeal.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +48,7 @@ class HomePage extends StatelessWidget {
           child: Row(
           children: [
             Featuredmeal(name: "Burger", image:"https://resize.elle.fr/original/var/plain_site/storage/images/elle-a-table/les-dossiers-de-la-redaction/dossier-de-la-redac/hamburger-maison/94060671-1-fre-FR/Comment-preparer-le-meilleur-hamburger-maison-du-monde.jpg", difficulty: "Easy",color: Colors.green),
+            Featuredmealbis(image:"https://resize.elle.fr/original/var/plain_site/storage/images/elle-a-table/les-dossiers-de-la-redaction/dossier-de-la-redac/hamburger-maison/94060671-1-fre-FR/Comment-preparer-le-meilleur-hamburger-maison-du-monde.jpg"),
             Featuredmeal(name: "Ravioli", image:"https://sf2.viepratique.fr/wp-content/uploads/sites/2/2014/06/pate-raviolis.jpg", difficulty: "Medium",color: Colors.yellow),
             Featuredmeal(name: "Burger", image:"https://resize.elle.fr/original/var/plain_site/storage/images/elle-a-table/les-dossiers-de-la-redaction/dossier-de-la-redac/hamburger-maison/94060671-1-fre-FR/Comment-preparer-le-meilleur-hamburger-maison-du-monde.jpg", difficulty: "Easy",color: Colors.green),
             Featuredmeal(name: "Burger", image:"https://resize.elle.fr/original/var/plain_site/storage/images/elle-a-table/les-dossiers-de-la-redaction/dossier-de-la-redac/hamburger-maison/94060671-1-fre-FR/Comment-preparer-le-meilleur-hamburger-maison-du-monde.jpg", difficulty: "Easy",color: Colors.green),

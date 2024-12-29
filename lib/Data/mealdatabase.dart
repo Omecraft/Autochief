@@ -96,6 +96,16 @@ class Mealdatabase extends ChangeNotifier{
     }
     print("in");
   }
+  Future<String> difcounter(difficulty) async {
+    int counter = 0;
+    for (var meal in meals) {
+      if (meal.difficulty == difficulty) {
+        counter++;
+      }
+    }
+    return counter.toString();
+
+  }
 
   final List<DataIngredient> ingredients = [];
     

@@ -186,7 +186,7 @@ class Addmeal extends StatelessWidget {
                 context.read<Mealdatabase>().addMeal(DataMeal()
                     ..name = mealname.text
                     ..difficulty = mealdifficulty
-                    ..description = mealingredients.text
+                    ..image = mealingredients.text
                     ..description = mealdescription.text);
                 Navigator.pop(context);
                 

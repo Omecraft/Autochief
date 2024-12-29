@@ -1,3 +1,4 @@
+import 'package:autochiefv2/Widget/ingredient.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -38,6 +39,7 @@ class Fridgepart extends StatelessWidget {
             ),),
           ),
           Container(
+            
             height: 1,
             
             decoration: const BoxDecoration(
@@ -50,8 +52,10 @@ class Fridgepart extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
+          Ingredient(image: "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg?cs=srgb&dl=pexels-pixabay-206959.jpg&fm=jpg", data: "Apple", quantity: "500 g")
         ],
+        
       ),
     );
   }

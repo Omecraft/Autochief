@@ -1,21 +1,20 @@
-import 'package:autochiefv2/Widget/seemore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 
-class Featuredmealbis extends StatelessWidget {
+class Ingredient extends StatelessWidget {
   final String data;
   final String image;
-  final String difficulty;
-  const Featuredmealbis({super.key,required this.image,required this.data,required this.difficulty});
+  final String quantity;
+  const Ingredient({super.key,required this.image,required this.data,required this.quantity});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 300,
-        width: 200,
+        height: 115,
+        width: 150,
         child: Stack(
           children: [
             ClipRRect(
@@ -27,23 +26,14 @@ class Featuredmealbis extends StatelessWidget {
                 fit: BoxFit.cover, // L'image sera coupée pour remplir les dimensions
               ),
             ),
-            Positioned(top: 10, right: 10, 
-            child: Container(decoration:BoxDecoration(
-              border: const Border(
-                top: BorderSide(color: Color(0xFFffb17a), width: 2),
-                bottom: BorderSide(color: Color(0xFFffb17a), width: 2),
-                left: BorderSide(color: Color(0xFFffb17a), width: 2),
-                right: BorderSide(color: Color(0xFFffb17a), width: 2),
-              ),
-              borderRadius: BorderRadius.circular(90),),
-            
+            Positioned(top: 7.5, right: 7.5, 
             child: const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Icon(IconlyLight.heart,color: Color(0xFFffb17a),),
-            ))),
-            Positioned(bottom: 100,child: Padding(
+              child: Icon(IconlyLight.plus,color: Color(0xFFffb17a),),
+            )),
+            Positioned(bottom: 40,child: Padding(
               padding: const EdgeInsets.only(left:10.0),
-              child: Text(difficulty,style: GoogleFonts.nunito(
+              child: Text(quantity,style: GoogleFonts.nunito(
                 color: Color(0xFFffb17a),
                 fontSize: 15,
                 shadows: [
@@ -55,7 +45,7 @@ class Featuredmealbis extends StatelessWidget {
                   ]
               ),),
             ),),
-            Positioned(bottom: 65,child: Padding(
+            Positioned(bottom: 10,child: Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: Text(data,style: GoogleFonts.nunito(
                 color: Color(0xFFffb17a),
@@ -71,7 +61,7 @@ class Featuredmealbis extends StatelessWidget {
                   ]
               ),),
             ),),
-            const Positioned(child: seemore(text: "See more",route:"/week" ,),bottom: 0,)
+            
             ]
         ),
             

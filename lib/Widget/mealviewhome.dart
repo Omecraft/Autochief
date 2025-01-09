@@ -26,7 +26,7 @@ class Mealviewhome extends StatelessWidget {
                       builder: (context, snapshot) {
                           if (snapshot.connectionState == ConnectionState.waiting) {
       // Affiche un indicateur de chargement pendant que les données sont en cours de récupération
-                            return CircularProgressIndicator();
+                            return const CircularProgressIndicator();
                           } else if (snapshot.hasError) {
       // Affiche un message d'erreur en cas de problème
                             return Text('Error: ${snapshot.error}');
@@ -44,7 +44,7 @@ class Mealviewhome extends StatelessWidget {
                                 ]
                             ),);
                         } else {
-                          return Text('No data');
+                          return const Text('No data');
             }
     },
 ),
@@ -54,7 +54,7 @@ class Mealviewhome extends StatelessWidget {
                       builder: (context, snapshot) {
                           if (snapshot.connectionState == ConnectionState.waiting) {
       // Affiche un indicateur de chargement pendant que les données sont en cours de récupération
-                            return CircularProgressIndicator();
+                            return const CircularProgressIndicator();
                           } else if (snapshot.hasError) {
       // Affiche un message d'erreur en cas de problème
                             return Text('Error: ${snapshot.error}');
@@ -72,7 +72,7 @@ class Mealviewhome extends StatelessWidget {
                                 ]
                             ),);
                         } else {
-                          return Text('No data');
+                          return const Text('No data');
             }
     },
 ),
@@ -81,7 +81,7 @@ class Mealviewhome extends StatelessWidget {
                       builder: (context, snapshot) {
                           if (snapshot.connectionState == ConnectionState.waiting) {
       // Affiche un indicateur de chargement pendant que les données sont en cours de récupération
-                            return CircularProgressIndicator();
+                            return const CircularProgressIndicator();
                           } else if (snapshot.hasError) {
       // Affiche un message d'erreur en cas de problème
                             return Text('Error: ${snapshot.error}');
@@ -99,11 +99,11 @@ class Mealviewhome extends StatelessWidget {
                                 ]
                             ),);
                         } else {
-                          return Text('No data');
+                          return const Text('No data');
             }
     },
 ),
-                    seemore(text:"View meals",route: "/mealList",)
+                    const seemore(text:"View meals",route: "/mealList",)
                   ],
                 ),
               ),

@@ -12,9 +12,9 @@ class Fridgepart extends StatelessWidget {
     return Container(
       height: 200,
       width: double.infinity,
-      decoration: BoxDecoration(
-        color: const Color(0xFF676f9d),
-        borderRadius: BorderRadius.only(
+      decoration: const BoxDecoration(
+        color: Color(0xFF676f9d),
+        borderRadius: const BorderRadius.only(
           bottomRight: Radius.circular(25),
           bottomLeft: Radius.circular(25),
           topLeft: Radius.circular(5),
@@ -53,7 +53,7 @@ class Fridgepart extends StatelessWidget {
               ],
             ),
           ),
-          Ingredient(image: "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg?cs=srgb&dl=pexels-pixabay-206959.jpg&fm=jpg", data: "Apple", quantity: "500 g")
+          const Ingredient(image: "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg?cs=srgb&dl=pexels-pixabay-206959.jpg&fm=jpg", data: "Apple", quantity: "500 g")
         ],
         
       ),

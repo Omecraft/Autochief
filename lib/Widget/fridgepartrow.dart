@@ -18,8 +18,8 @@ class Fridgepartrow extends StatelessWidget {
             child: Container(
               height: 200,
               width: double.infinity,
-              decoration: BoxDecoration(
-                color: const Color(0xFF676f9d),
+              decoration: const BoxDecoration(
+                color: Color(0xFF676f9d),
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(25),
                   bottomLeft: Radius.circular(25),
@@ -68,8 +68,8 @@ class Fridgepartrow extends StatelessWidget {
             child: Container(
               height: 200,
               width: double.infinity,
-              decoration: BoxDecoration(
-                color: const Color(0xFF676f9d),
+              decoration: const BoxDecoration(
+                color: Color(0xFF676f9d),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25),
                   bottomRight: Radius.circular(25),

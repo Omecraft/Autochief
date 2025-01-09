@@ -1,16 +1,45 @@
+// ignore: unused_import
+import 'dart:ffi';
+
+import 'package:autochiefv2/Data/mealdatabase.dart';
 import 'package:autochiefv2/Widget/seemore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
+import 'package:provider/provider.dart';
 
-class Featuredmealbis extends StatelessWidget {
-  final String data;
-  final String image;
-  final String difficulty;
-  const Featuredmealbis({super.key,required this.image,required this.data,required this.difficulty});
-
+class Todaymeal extends StatelessWidget {
+  final String day;
+  final int lunch;
+  const Todaymeal({super.key,required this.day,required this.lunch});
   @override
+  
+
   Widget build(BuildContext context) {
+
+    List currentweek = context.watch<Mealdatabase>().weekmeals;
+    final bool created = context.watch<Mealdatabase>().iscreated();
+
+
+    if (!created) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          height: 200,
+          width: 200,
+          child: Text(
+            "The week has not been created yet!",
+            style: GoogleFonts.nunito(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.red,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
@@ -21,9 +50,9 @@ class Featuredmealbis extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(16), // Bordures arrondies
               child: Image.network(
-                image, // Remplace par ton URL
+                currentweek[lunch].image, // Remplace par ton URL
                 width: 200, // Largeur personnalisée
-                height: 300, // Hauteur personnalisée
+                height: 200, // Hauteur personnalisée
                 fit: BoxFit.cover, // L'image sera coupée pour remplir les dimensions
               ),
             ),
@@ -43,7 +72,7 @@ class Featuredmealbis extends StatelessWidget {
             ))),
             Positioned(bottom: 100,child: Padding(
               padding: const EdgeInsets.only(left:10.0),
-              child: Text(difficulty,style: GoogleFonts.nunito(
+              child: Text(currentweek[lunch].difficulty,style: GoogleFonts.nunito(
                 color: const Color(0xFFffb17a),
                 fontSize: 15,
                 shadows: [
@@ -57,7 +86,7 @@ class Featuredmealbis extends StatelessWidget {
             ),),
             Positioned(bottom: 65,child: Padding(
               padding: const EdgeInsets.only(left: 10.0),
-              child: Text(data,style: GoogleFonts.nunito(
+              child: Text(currentweek[lunch].name,style: GoogleFonts.nunito(
                 color: const Color(0xFFffb17a),
                 fontWeight: FontWeight.bold,
                 

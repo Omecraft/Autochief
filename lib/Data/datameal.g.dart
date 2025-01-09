@@ -32,8 +32,13 @@ const DataMealSchema = CollectionSchema(
       name: r'image',
       type: IsarType.string,
     ),
-    r'name': PropertySchema(
+    r'ingredients': PropertySchema(
       id: 3,
+      name: r'ingredients',
+      type: IsarType.stringList,
+    ),
+    r'name': PropertySchema(
+      id: 4,
       name: r'name',
       type: IsarType.string,
     )
@@ -61,6 +66,13 @@ int _dataMealEstimateSize(
   bytesCount += 3 + object.description.length * 3;
   bytesCount += 3 + object.difficulty.length * 3;
   bytesCount += 3 + object.image.length * 3;
+  bytesCount += 3 + object.ingredients.length * 3;
+  {
+    for (var i = 0; i < object.ingredients.length; i++) {
+      final value = object.ingredients[i];
+      bytesCount += value.length * 3;
+    }
+  }
   bytesCount += 3 + object.name.length * 3;
   return bytesCount;
 }
@@ -74,7 +86,8 @@ void _dataMealSerialize(
   writer.writeString(offsets[0], object.description);
   writer.writeString(offsets[1], object.difficulty);
   writer.writeString(offsets[2], object.image);
-  writer.writeString(offsets[3], object.name);
+  writer.writeStringList(offsets[3], object.ingredients);
+  writer.writeString(offsets[4], object.name);
 }
 
 DataMeal _dataMealDeserialize(
@@ -88,7 +101,8 @@ DataMeal _dataMealDeserialize(
   object.difficulty = reader.readString(offsets[1]);
   object.id = id;
   object.image = reader.readString(offsets[2]);
-  object.name = reader.readString(offsets[3]);
+  object.ingredients = reader.readStringList(offsets[3]) ?? [];
+  object.name = reader.readString(offsets[4]);
   return object;
 }
 
@@ -106,6 +120,8 @@ P _dataMealDeserializeProp<P>(
     case 2:
       return (reader.readString(offset)) as P;
     case 3:
+      return (reader.readStringList(offset) ?? []) as P;
+    case 4:
       return (reader.readString(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -646,6 +662,230 @@ extension DataMealQueryFilter
     });
   }
 
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementEqualTo(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'ingredients',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementGreaterThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'ingredients',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementLessThan(
+    String value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'ingredients',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementBetween(
+    String lower,
+    String upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'ingredients',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'ingredients',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'ingredients',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'ingredients',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'ingredients',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'ingredients',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsElementIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'ingredients',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsLengthEqualTo(int length) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'ingredients',
+        length,
+        true,
+        length,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition> ingredientsIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'ingredients',
+        0,
+        true,
+        0,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'ingredients',
+        0,
+        false,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsLengthLessThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'ingredients',
+        0,
+        true,
+        length,
+        include,
+      );
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsLengthGreaterThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'ingredients',
+        length,
+        include,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition>
+      ingredientsLengthBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'ingredients',
+        lower,
+        includeLower,
+        upper,
+        includeUpper,
+      );
+    });
+  }
+
   QueryBuilder<DataMeal, DataMeal, QAfterFilterCondition> nameEqualTo(
     String value, {
     bool caseSensitive = true,
@@ -919,6 +1159,12 @@ extension DataMealQueryWhereDistinct
     });
   }
 
+  QueryBuilder<DataMeal, DataMeal, QDistinct> distinctByIngredients() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'ingredients');
+    });
+  }
+
   QueryBuilder<DataMeal, DataMeal, QDistinct> distinctByName(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -950,6 +1196,12 @@ extension DataMealQueryProperty
   QueryBuilder<DataMeal, String, QQueryOperations> imageProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'image');
+    });
+  }
+
+  QueryBuilder<DataMeal, List<String>, QQueryOperations> ingredientsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'ingredients');
     });
   }
 

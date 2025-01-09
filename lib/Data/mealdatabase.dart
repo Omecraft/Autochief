@@ -3,6 +3,7 @@ import 'package:autochiefv2/Data/datameal.dart';
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
+import 'dart:math';
 
 class Mealdatabase extends ChangeNotifier{
 
@@ -18,13 +19,42 @@ class Mealdatabase extends ChangeNotifier{
       [DataMealSchema, DataIngredientSchema],
       directory: dir.path);
       for (var i = 0; i < 200; i++) {
-        print("init");
         }
       }
   
   // Liste des plats
   final List<DataMeal> meals = [];
+  final List<List<DataMeal>> weekmeals = [];
+  bool created = false;
 
+  // Creer un emploi du temps
+  Future<void> createweek() async {
+  // Vérifier qu'il y a au moins 14 plats dans la liste meals
+  if (meals.length < 14) {
+    throw Exception("Not enough meals in the database to create a week.");
+  }
+
+  // Créer une liste temporaire pour éviter de modifier la liste originale
+  final List<DataMeal> shuffledMeals = List.from(meals);
+  shuffledMeals.shuffle(Random());
+
+  // Réinitialiser weekmeals au cas où il a déjà été rempli
+  weekmeals.clear();
+
+  // Répartir 14 plats en 7 jours, avec 2 plats par jour
+  for (int i = 0; i < 7; i++) {
+    weekmeals.add(shuffledMeals.sublist(i * 2, i * 2 + 2));
+  }
+
+  created = true;
+
+  // Notification des listeners pour mettre à jour l'interface utilisateur
+  notifyListeners();
+}
+
+  bool iscreated(){
+    return created;
+  }
   // Ajout d'un plat
   Future<void> addMeal(DataMeal meal) async {
     // Creation du plat a ajouter
@@ -91,8 +121,8 @@ class Mealdatabase extends ChangeNotifier{
       });
   }
   Future<void> printmeals() async {
+    // ignore: unused_local_variable
     for (var meal in meals) {
-      print('Meal: ${meal.name}, Description: ${meal.description}');
     }
     print("in");
   }

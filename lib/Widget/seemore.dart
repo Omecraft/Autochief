@@ -2,9 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:iconly/iconly.dart';
-import 'package:slidable_button/slidable_button.dart';
 
+// ignore: camel_case_types
 class seemore extends StatelessWidget {
   final String text;
   final String route;
@@ -45,11 +44,11 @@ class seemore extends StatelessWidget {
                 SizedBox(
                   width: 180,
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Stack(
                       children: [
                         Center(child: Text(text,style: GoogleFonts.nunito(
-                          color: Color(0xFFffb17a),
+                          color: const Color(0xFFffb17a),
                           fontSize: 15,
                           shadows: [
                               

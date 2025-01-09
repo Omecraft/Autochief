@@ -33,7 +33,7 @@ class Fridge extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Fridgepart(namecategory: "Fruit"),
           ),
-          Fridgepartrow(name1: "Juice", name2: "Spices")
+          const Fridgepartrow(name1: "Juice", name2: "Spices")
            
           ],
         ),

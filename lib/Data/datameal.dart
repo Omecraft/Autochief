@@ -11,6 +11,7 @@ class DataMeal {
   late String image;
   late String difficulty;
   late String description;
+  late List<String> ingredients; 
   
 
 }

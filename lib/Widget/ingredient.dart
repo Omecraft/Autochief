@@ -26,15 +26,15 @@ class Ingredient extends StatelessWidget {
                 fit: BoxFit.cover, // L'image sera coupée pour remplir les dimensions
               ),
             ),
-            Positioned(top: 7.5, right: 7.5, 
-            child: const Padding(
+            const Positioned(top: 7.5, right: 7.5, 
+            child: Padding(
               padding: EdgeInsets.all(8.0),
               child: Icon(IconlyLight.plus,color: Color(0xFFffb17a),),
             )),
             Positioned(bottom: 40,child: Padding(
               padding: const EdgeInsets.only(left:10.0),
               child: Text(quantity,style: GoogleFonts.nunito(
-                color: Color(0xFFffb17a),
+                color: const Color(0xFFffb17a),
                 fontSize: 15,
                 shadows: [
                     const Shadow(
@@ -48,7 +48,7 @@ class Ingredient extends StatelessWidget {
             Positioned(bottom: 10,child: Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: Text(data,style: GoogleFonts.nunito(
-                color: Color(0xFFffb17a),
+                color: const Color(0xFFffb17a),
                 fontWeight: FontWeight.bold,
                 
                 fontSize: 25,

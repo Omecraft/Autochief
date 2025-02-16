@@ -4,8 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class Mealviewhome extends StatelessWidget {
+class Mealviewhome extends StatefulWidget {
   const Mealviewhome({super.key});
+
+  @override
+  _MealviewhomeState createState() => _MealviewhomeState();
+}
+
+class _MealviewhomeState extends State<Mealviewhome> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<Mealdatabase>().readmeals(); // Appel au Provider ici
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +71,7 @@ class Mealviewhome extends StatelessWidget {
                             return Text('Error: ${snapshot.error}');
                           } else if (snapshot.hasData) {
       // Affiche les données une fois récupérées
-                            return Text('Easy Meals: ${snapshot.data}',style: GoogleFonts.nunito(
+                            return Text('Medium Meals: ${snapshot.data}',style: GoogleFonts.nunito(
                                 color: Colors.orange,
                                 fontSize: 25,
                                 shadows: [
@@ -87,7 +98,7 @@ class Mealviewhome extends StatelessWidget {
                             return Text('Error: ${snapshot.error}');
                           } else if (snapshot.hasData) {
       // Affiche les données une fois récupérées
-                            return Text('Easy Meals: ${snapshot.data}',style: GoogleFonts.nunito(
+                            return Text('Difficult Meals: ${snapshot.data}',style: GoogleFonts.nunito(
                                 color: Colors.red,
                                 fontSize: 25,
                                 shadows: [

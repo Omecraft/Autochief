@@ -13,7 +13,7 @@ class Addmeal extends StatelessWidget {
   final TextEditingController mealname = TextEditingController();
 
   //Text controller for the meal difficulty
-  late String mealdifficulty;
+  String mealdifficulty = "Easy";
 
   //Text controller for the meal ingredients
   final TextEditingController mealingredients = TextEditingController();

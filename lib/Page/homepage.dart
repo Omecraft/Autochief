@@ -1,7 +1,7 @@
 
 import 'package:autochiefv2/Widget/featuredmealbis.dart';
 import 'package:autochiefv2/Widget/mealviewhome.dart';
-import 'package:autochiefv2/Widget/todays_meal.dart';
+import 'package:autochiefv2/Widget/weekmeal.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

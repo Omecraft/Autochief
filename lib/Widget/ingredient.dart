@@ -12,7 +12,7 @@ class Ingredient extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
+      child: SizedBox(
         height: 115,
         width: 150,
         child: Stack(

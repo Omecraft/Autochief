@@ -14,7 +14,7 @@ class Fridgepart extends StatelessWidget {
       width: double.infinity,
       decoration: const BoxDecoration(
         color: Color(0xFF676f9d),
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomRight: Radius.circular(25),
           bottomLeft: Radius.circular(25),
           topLeft: Radius.circular(5),

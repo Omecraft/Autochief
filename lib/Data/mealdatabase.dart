@@ -28,10 +28,10 @@ class Mealdatabase extends ChangeNotifier{
   bool created = false;
 
   // Creer un emploi du temps
-  Future<void> createweek() async {
+  Future createweek() async {
   // Vérifier qu'il y a au moins 14 plats dans la liste meals
   if (meals.length < 14) {
-    throw Exception("Not enough meals in the database to create a week.");
+    return false;
   }
 
   // Créer une liste temporaire pour éviter de modifier la liste originale
@@ -50,6 +50,7 @@ class Mealdatabase extends ChangeNotifier{
 
   // Notification des listeners pour mettre à jour l'interface utilisateur
   notifyListeners();
+  return true;
 }
 
   bool iscreated(){
@@ -62,7 +63,8 @@ class Mealdatabase extends ChangeNotifier{
       ..name = meal.name
       ..image = meal.image
       ..difficulty = meal.difficulty
-      ..description = meal.description;
+      ..description = meal.description
+      ..ingredients = [];
 
 
     // OPERARATION DE BASE //

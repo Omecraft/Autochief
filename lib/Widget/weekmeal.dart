@@ -1,6 +1,11 @@
+import 'package:autochiefv2/Widget/Day_slider.dart';
+import 'package:autochiefv2/Widget/part_of_day_chooser.dart';
+import 'package:autochiefv2/Widget/part_of_day_icon.dart';
 import 'package:autochiefv2/Widget/todaymeal.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
+import 'package:autochiefv2/Data/mealdatabase.dart';
+
 
 // ignore: must_be_immutable
 class Weekmeal extends StatelessWidget {
@@ -13,20 +18,34 @@ class Weekmeal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Todaymeal(day:"Lundi", lunch:0),
-    
-        // Utilisation d'un SizedBox pour spécifier une taille fixe pour ListView
-        SizedBox(
-          width: 100,
-          height: 200,
-          child: ListView(
+        /*if (!Mealdatabase().iscreated()) ...[
+          // Your widgets will go here when database is not created
+          const Text('Database is not created'),
+        ],*/
+        if (!Mealdatabase().iscreated())...[
+          // Your widgets will go here when database is created
+          Row( 
             children: [
-              TimelineTile(isFirst: true,),
-              TimelineTile(),
-              TimelineTile(isLast: true),
-            ],
-          ),
-        )
+              Container(
+                
+                height: 124,
+                width: MediaQuery.of(context).size.width * 0.05, 
+              ),
+             Container(
+              
+              height: 124,
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: DaySlider(),
+             ),
+             Container(
+              
+              height: 124,
+              width: MediaQuery.of(context).size.width * 0.05, 
+             ),
+             PartOfDayIcon()
+            ]
+          ) 
+        ]
       ],
     );
   }

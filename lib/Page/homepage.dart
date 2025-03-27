@@ -38,6 +38,9 @@ class HomePage extends StatelessWidget {
      body: SingleChildScrollView(
        child: Column(
          children: [
+
+
+          // Weakmeal Part
           Text("Meal of the week", style: GoogleFonts.nunito(
                 fontSize: 20,
                 color: const Color.fromARGB(255, 255, 255, 255),
@@ -51,6 +54,9 @@ class HomePage extends StatelessWidget {
                 ]
                 ),),
           Weekmeal(),
+
+
+
           const SizedBox(height: 20),
           Center(child: Text("Featured meal", style: GoogleFonts.nunito(
                 fontSize: 20,

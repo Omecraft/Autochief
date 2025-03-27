@@ -1,6 +1,5 @@
 
 import 'package:autochiefv2/Data/mealdatabase.dart';
-import 'package:autochiefv2/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +11,7 @@ class Calendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    void _handleCreateWeek(BuildContext context) async {
+    void handleCreateWeek(BuildContext context) async {
       print("in create week");
   bool success = await context.read<Mealdatabase>().createweek();
   
@@ -55,7 +54,7 @@ class Calendar extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          OutlinedButton(onPressed:() {_handleCreateWeek(context);} ,  child: const Text("data")),
+          OutlinedButton(onPressed:() {handleCreateWeek(context);} ,  child: const Text("data")),
           const Center(
             child: Text('Calendar'),
           ),

@@ -74,6 +74,7 @@ class _MyAppState extends State<MyApp> {
         '/fridge': (context) => const Fridge(),
         '/mealList': (context) => const MealList(),
         '/addmeal': (context) => Addmeal(),
+        
       },
       
     );

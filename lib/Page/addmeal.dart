@@ -128,7 +128,7 @@ class Addmeal extends StatelessWidget {
                 ),
               ),
               onValueChanged: (v) {
-              mealdifficulty=v;
+              mealdifficulty = v.toString();
             }),
             TextField(
               controller: mealingredients,

@@ -42,6 +42,7 @@ class Weekmeal extends StatelessWidget {
               height: 124,
               width: MediaQuery.of(context).size.width * 0.05, 
              ),
+             
              PartOfDayIcon()
             ]
           ) 

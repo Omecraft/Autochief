@@ -1,5 +1,6 @@
 
 import 'package:autochiefv2/Widget/featuredmealbis.dart';
+import 'package:autochiefv2/Widget/meal_resume.dart';
 import 'package:autochiefv2/Widget/mealviewhome.dart';
 import 'package:autochiefv2/Widget/weekmeal.dart';
 import 'package:flutter/material.dart';
@@ -197,9 +198,24 @@ class HomePage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 100),
+          Center(child: Text("Meal resume", style: GoogleFonts.nunito(
+                fontSize: 20,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                fontWeight: FontWeight.bold,
+                shadows: [
+                  const Shadow(
+                    blurRadius: 2.0,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    offset: Offset(0.0, 0.0),
+                  ),
+                ]
+                ),),),
+          const MealResume(),
+          const SizedBox(height: 200),
          ],
          
        ),
+       
      ),
      
     );

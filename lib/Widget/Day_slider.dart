@@ -40,7 +40,7 @@ class _DaySliderState extends State<DaySlider> {
             margin: EdgeInsets.only(top: 10),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: const Color(0xFF424769),
+              color: const Color(0xFF333650),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(

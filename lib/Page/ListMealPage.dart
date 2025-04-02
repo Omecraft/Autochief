@@ -121,6 +121,10 @@ class _ListmealpageState extends State<Listmealpage> {
             ),
             const SizedBox(height: 20),
             MealPart(mealName: "Spaghetti",difficulty: "Easy",),
+            const SizedBox(height: 20),
+            MealPart(mealName: "Pizza",difficulty: "Medium",),
+            const SizedBox(height: 20),
+            MealPart(mealName: "Steak",difficulty: "Difficult",),
           ]
         ),
       ),

@@ -233,9 +233,9 @@ class HomePage extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                DifficultyWidget(icon: Icons.check, color: Color(0xFF639e72), text: "Easy meals", number: 5),
-                DifficultyWidget(icon: Icons.remove, color: Color(0xFFeaa546), text: "Medium meals", number: 18,),
-                DifficultyWidget(icon: Icons.close, color: Color(0xFFd35649), text: "Difficult meals", number: 9,),
+                DifficultyWidget(icon: Icons.check, color: Color(0xFF639e72), text: "Easy meals", ),
+                DifficultyWidget(icon: Icons.remove, color: Color(0xFFeaa546), text: "Medium meals", ),
+                DifficultyWidget(icon: Icons.close, color: Color(0xFFd35649), text: "Difficult meals", ),
               ],
             ),
             const SizedBox(height: 20),

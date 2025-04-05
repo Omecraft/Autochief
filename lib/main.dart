@@ -12,21 +12,21 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 
-void main() async{
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Mealdatabase.init();
-  
+
+  final mealDb = Mealdatabase();
+  await mealDb.readmeals(); // Ensure initial data is loaded
 
   runApp(
     MultiProvider(
       providers: [
-      ChangeNotifierProvider(create: (context) => Mealdatabase()),
-      
+        ChangeNotifierProvider(create: (context) => mealDb),
       ],
       child: const MyApp(),
     )
-    );
+  );
 }
 
 class MyApp extends StatefulWidget {

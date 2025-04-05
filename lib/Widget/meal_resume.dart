@@ -1,5 +1,8 @@
+import 'package:autochiefv2/Page/ListMealPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:autochiefv2/Data/mealdatabase.dart';
+import 'package:provider/provider.dart';
 
 class MealResume extends StatefulWidget {
   const MealResume({Key? key}) : super(key: key);
@@ -11,9 +14,12 @@ class MealResume extends StatefulWidget {
 class _MealResumeState extends State<MealResume> {
   @override
   Widget build(BuildContext context) {
+    // Access the meal database using Provider
+    final mealDatabase = Provider.of<Mealdatabase>(context);
+    
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/listmealpage');
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const Listmealpage()));
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.93,
@@ -30,10 +36,13 @@ class _MealResumeState extends State<MealResume> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("45", style: TextStyle(fontSize: 35,color: Color.fromARGB(255, 255, 255, 255)),),
+                  Text(
+                    "${mealDatabase.meals.length}", 
+                    style: TextStyle(fontSize: 35, color: Color.fromARGB(255, 255, 255, 255)),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: const Text("Total meals", style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 255, 255, 255)),),
+                    child: const Text("Total meals", style: TextStyle(fontSize: 15, color: Color.fromARGB(255, 255, 255, 255)),),
                   )
                 ]
               ),

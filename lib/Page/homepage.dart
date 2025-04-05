@@ -5,6 +5,7 @@ import 'package:autochiefv2/Widget/featuredmealbis.dart';
 import 'package:autochiefv2/Widget/meal_resume.dart';
 import 'package:autochiefv2/Widget/mealviewhome.dart';
 import 'package:autochiefv2/Widget/weekmeal.dart';
+import 'package:autochiefv2/Page/ListMealPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -86,122 +87,8 @@ class HomePage extends StatelessWidget {
          
               ],
             )),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                
-                const Mealviewhome(),
-                const SizedBox(width: 20),
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF333650),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: 130,
-                        width: 125,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Column(
-                              children: [
-                                Text("ADD A", style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.bold,
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 2.0,
-                                      color: Color.fromARGB(255, 255, 255, 255),
-                                      offset: Offset(0.0, 0.0),
-                                    ),
-                                  ]
-                                  ),),
-                                  Text("MEAL", style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.bold,
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 2.0,
-                                      color: Color.fromARGB(255, 255, 255, 255),
-                                      offset: Offset(0.0, 0.0),
-                                    ),
-                                  ]
-                                  ),),
-                              ],
-                            ),
-                            
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/addmeal');
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom:8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFF333650),
-                                    border: Border.all(color: const Color(0xFFffb17a), width: 2),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: const Icon(Icons.add_rounded, color: Color(0xFFffb17a), size: 60)),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF333650),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: 105,
-                        width: 125,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Column(
-                              children: [
-                                Text("FAQ", style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.bold,
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 2.0,
-                                      color: Color.fromARGB(255, 255, 255, 255),
-                                      offset: Offset(0.0, 0.0),
-                                    ),
-                                  ]
-                                  ),),
-                              ],
-                            ),
-                            
-                            Padding(
-                              padding: const EdgeInsets.only(bottom:8.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF333650),
-                                  border: Border.all(color: const Color(0xFFffb17a), width: 2),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: const Icon(Icons.help_rounded, color: Color(0xFFffb17a), size: 60)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 100),
+            
+            const SizedBox(height: 20),
             Center(child: Text("Meal resume", style: GoogleFonts.nunito(
                   fontSize: 20,
                   color: const Color.fromARGB(255, 255, 255, 255),
@@ -214,32 +101,42 @@ class HomePage extends StatelessWidget {
                     ),
                   ]
                   ),),),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      
-                    ],
-                  ),
-                  
-                ],
-              ),
-            ),
             const MealResume(),
             const SizedBox(height: 20),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                DifficultyWidget(icon: Icons.check, color: Color(0xFF639e72), text: "Easy meals", ),
-                DifficultyWidget(icon: Icons.remove, color: Color(0xFFeaa546), text: "Medium meals", ),
-                DifficultyWidget(icon: Icons.close, color: Color(0xFFd35649), text: "Difficult meals", ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => const Listmealpage(initialClicked: 0))
+                    );
+                  },
+                  child: const DifficultyWidget(icon: Icons.check, color: Color(0xFF639e72), text: "Easy meals"),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => const Listmealpage(initialClicked: 1))
+                    );
+                  },
+                  child: const DifficultyWidget(icon: Icons.remove, color: Color(0xFFeaa546), text: "Medium meals"),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => const Listmealpage(initialClicked: 2))
+                    );
+                  },
+                  child: const DifficultyWidget(icon: Icons.close, color: Color(0xFFd35649), text: "Difficult meals"),
+                ),
               ],
             ),
             const SizedBox(height: 20),
-            BottomWidget(),
+            const BottomWidget(),
          
             const SizedBox(height: 200),
            ],

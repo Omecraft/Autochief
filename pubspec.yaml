@@ -45,6 +45,7 @@ dependencies:
   timeline_tile: ^2.0.0
   carousel_slider: ^5.0.0  # Remove the standalone 'dependencies:' line and keep this here
   iconic: ^0.1.0
+  lucide_icons: ^0.257.0
 
 dev_dependencies:
   flutter_test:

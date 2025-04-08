@@ -1,6 +1,7 @@
 
 import 'package:autochiefv2/Data/mealdatabase.dart';
 import 'package:autochiefv2/Page/ListMealPage.dart';
+import 'package:autochiefv2/Page/add_meal.dart';
 import 'package:autochiefv2/Page/addmeal.dart';
 import 'package:autochiefv2/Page/crysnav.dart';
 import 'package:autochiefv2/Page/fridge.dart';
@@ -74,8 +75,9 @@ class _MyAppState extends State<MyApp> {
         '/profile': (context) => const Profile(),
         '/fridge': (context) => const Fridge(),
         '/mealList': (context) => const MealList(),
-        '/addmeal': (context) => Addmeal(),
+        '/addmeal': (context) => AddMealPage(),
         '/listmealpage': (context) => const Listmealpage(), // Add this line
+        
       },
       
     );

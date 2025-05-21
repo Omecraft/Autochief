@@ -1,6 +1,7 @@
 import 'package:autochiefv2/Data/mealdatabase.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../constants.dart';
 
 class DifficultyWidget extends StatelessWidget {
   final IconData icon;
@@ -37,7 +38,7 @@ class DifficultyWidget extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.28,
         height: MediaQuery.of(context).size.width * 0.3*1.5,
         decoration: BoxDecoration(
-          color: const Color(0xFF333650),
+          color: widgetcolor,
           borderRadius: BorderRadius.circular(10),  
         ),
         child: Column(

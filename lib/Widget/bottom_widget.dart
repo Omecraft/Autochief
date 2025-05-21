@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:autochiefv2/constants.dart';
 
 class BottomWidget extends StatelessWidget {
   const BottomWidget({super.key});
@@ -16,7 +17,7 @@ class BottomWidget extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.42,
           height: MediaQuery.of(context).size.width * 0.3,
           decoration: BoxDecoration(
-            color: const Color(0xFF333650),
+            color: widgetcolor,
             borderRadius: BorderRadius.circular(10)
           ),
           child: const Column(
@@ -45,7 +46,7 @@ class BottomWidget extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.42,
         height: MediaQuery.of(context).size.width * 0.3,
         decoration: BoxDecoration(
-          color: const Color(0xFF333650),
+          color: widgetcolor,
           borderRadius: BorderRadius.circular(10)
         ),
         child: const Column(

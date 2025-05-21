@@ -4,10 +4,12 @@ import 'package:autochiefv2/Widget/difficulty_widget.dart';
 import 'package:autochiefv2/Widget/featuredmealbis.dart';
 import 'package:autochiefv2/Widget/meal_resume.dart';
 import 'package:autochiefv2/Widget/mealviewhome.dart';
+import 'package:autochiefv2/Widget/weakmealv2.dart';
 import 'package:autochiefv2/Widget/weekmeal.dart';
 import 'package:autochiefv2/Page/ListMealPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../constants.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,19 +18,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
     appBar: AppBar(
-      backgroundColor: const Color(0xFF2d3250),
-      title: const Text('AutoChief',style: TextStyle(
-        color: Color(0xFFffb17a),
-        fontSize: 30,
-        fontWeight: FontWeight.bold,
-        shadows: [
-          Shadow(
-            blurRadius: 5.0,
-            color: Color(0xFFffb17a),
-            offset: Offset(0.0, 0.0),
-          ),
-        ]
-      ),),
+      backgroundColor: secondarybackgroundColor,
+      title:  Text('AutoChief',style: titlestyle),
       actions: [
         IconButton(
           onPressed: () {
@@ -38,7 +29,7 @@ class HomePage extends StatelessWidget {
         )
       ],
     ),
-    backgroundColor: const Color(0xFF242739),
+    backgroundColor: const Color(0xFF1E2239),
      body: SingleChildScrollView(
        child: Padding(
          padding: const EdgeInsets.all(20.0),
@@ -47,35 +38,15 @@ class HomePage extends StatelessWidget {
          
          
             // Weakmeal Part
-            Text("Meal of the week", style: GoogleFonts.nunito(
-                  fontSize: 20,
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  fontWeight: FontWeight.bold,
-                  shadows: [
-                    const Shadow(
-                      blurRadius: 2.0,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      offset: Offset(0.0, 0.0),
-                    ),
-                  ]
-                  ),),
-            Weekmeal(),
+            Text("Meal of the week", style: titlestyle,),
+            
+            WeakMealV2(),
+            
          
          
          
             const SizedBox(height: 20),
-            Center(child: Text("Featured meal", style: GoogleFonts.nunito(
-                  fontSize: 20,
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  fontWeight: FontWeight.bold,
-                  shadows: [
-                    const Shadow(
-                      blurRadius: 2.0,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      offset: Offset(0.0, 0.0),
-                    ),
-                  ]
-                  ),),),
+            Center(child: Text("Featured meal", style: titlestyle,),),
             const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -89,18 +60,7 @@ class HomePage extends StatelessWidget {
             )),
             
             const SizedBox(height: 20),
-            Center(child: Text("Meal resume", style: GoogleFonts.nunito(
-                  fontSize: 20,
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  fontWeight: FontWeight.bold,
-                  shadows: [
-                    const Shadow(
-                      blurRadius: 2.0,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      offset: Offset(0.0, 0.0),
-                    ),
-                  ]
-                  ),),),
+            Center(child: Text("Meal resume", style: titlestyle,),),
             const MealResume(),
             const SizedBox(height: 20),
             Row(

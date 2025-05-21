@@ -7,7 +7,8 @@ import 'difficulty_selector.dart';
 import 'ingredient_selector.dart';
 
 class AddMealPage extends StatefulWidget {
-  const AddMealPage({Key? key}) : super(key: key);
+  final DataMeal? meal; // Optional meal parameter for editing
+  const AddMealPage({Key? key, this.meal}) : super(key: key);
 
   @override
   State<AddMealPage> createState() => _AddMealPageState();
@@ -18,29 +19,58 @@ class _AddMealPageState extends State<AddMealPage> {
   final TextEditingController _descriptionController = TextEditingController();
   String _difficulty = 'medium';
   List<String> _selectedIngredients = [];
+  bool _isEditing = false; // Flag to determine if we're editing or adding
+
+  @override
+  void initState() {
+    super.initState();
+    // Check if we're editing an existing meal
+    if (widget.meal != null) {
+      _isEditing = true;
+      // Pre-fill the form with the meal data
+      _dishNameController.text = widget.meal!.name;
+      _descriptionController.text = widget.meal!.description;
+      _difficulty = widget.meal!.difficulty;
+      // If the meal has ingredients, add them to selected ingredients
+      /*
+      A modifier quand les ingredients seront crees
+      
+      if (widget.meal!.ingredients != null) {
+        _selectedIngredients = widget.meal!.ingredients!.map((ing) => ing.name).toList();
+      }
+      */
+    }
+  }
 
   void _handleSubmit() {
-    // Here you would typically send the data to your backend
-    print({
-      'dishName': _dishNameController.text,
-      'description': _descriptionController.text,
-      'difficulty': _difficulty,
-      'selectedIngredients': _selectedIngredients,
-    });
+    if (_isEditing) {
+      // Update existing meal
+      final updatedMeal = widget.meal!
+        ..name = _dishNameController.text
+        ..difficulty = _difficulty
+        ..description = _descriptionController.text;
+      
+      // Update the meal in the database
+      context.read<Mealdatabase>().updateMeal(updatedMeal);
+      
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Plat modifié avec succès!')),
+      );
+    } else {
+      // Create a new meal
+      context.read<Mealdatabase>().addMeal(DataMeal()
+        ..name = _dishNameController.text
+        ..difficulty = _difficulty
+        ..image = 'default_meal_image.png' // Using a default image path
+        ..description = _descriptionController.text);
+      
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Plat ajouté avec succès!')),
+      );
+    }
     
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Plat ajouté avec succès!')),
-    );
-    // Create a new meal
-    context.read<Mealdatabase>().addMeal(DataMeal()
-      ..name = _dishNameController.text
-      ..difficulty = _difficulty
-      ..image = 'default_meal_image.png' // Using a default image path since no image input is defined
-      ..description = _descriptionController.text);
+    // Return to previous screen
     Navigator.pop(context);
-
-    // Add the meal to the database
-    
   }
 
   @override
@@ -68,9 +98,9 @@ class _AddMealPageState extends State<AddMealPage> {
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   const SizedBox(width: 8),
-                  const Text(
-                    'Ajouter un plat',
-                    style: TextStyle(
+                  Text(
+                    _isEditing ? 'Modifier le plat' : 'Ajouter un plat',
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
@@ -249,12 +279,12 @@ class _AddMealPageState extends State<AddMealPage> {
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              Icon(LucideIcons.plus, size: 20),
-                              SizedBox(width: 8),
+                            children: [
+                              Icon(_isEditing ? LucideIcons.save : LucideIcons.plus, size: 20),
+                              const SizedBox(width: 8),
                               Text(
-                                'Ajouter le plat',
-                                style: TextStyle(
+                                _isEditing ? 'Modifier le plat' : 'Ajouter le plat',
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                 ),

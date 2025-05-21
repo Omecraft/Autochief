@@ -2,15 +2,16 @@
 import 'package:autochiefv2/Data/mealdatabase.dart';
 import 'package:autochiefv2/Page/ListMealPage.dart';
 import 'package:autochiefv2/Page/add_meal.dart';
-import 'package:autochiefv2/Page/addmeal.dart';
+import 'package:autochiefv2/deprecated/addmeal.dart';
 import 'package:autochiefv2/Page/crysnav.dart';
 import 'package:autochiefv2/Page/fridge.dart';
 import 'package:autochiefv2/Page/homepage.dart';
-import 'package:autochiefv2/Page/meallist.dart';
+import 'package:autochiefv2/deprecated/Deprecated_meallist.dart';
 import 'package:autochiefv2/Page/profile.dart';
 import 'package:autochiefv2/Page/week.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:autochiefv2/Page/fridgepage.dart';
 
 
 void main() async {
@@ -40,7 +41,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final List _pages = [
     const HomePage(),
-    const Fridge(),
+    const FridgePage(),
     const Calendar(),
     const Profile(),
   ];
@@ -73,7 +74,7 @@ class _MyAppState extends State<MyApp> {
         '/home': (context) => const HomePage(),
         '/week': (context) => const Calendar(),
         '/profile': (context) => const Profile(),
-        '/fridge': (context) => const Fridge(),
+        '/fridge': (context) => const FridgePage(),
         '/mealList': (context) => const MealList(),
         '/addmeal': (context) => AddMealPage(),
         '/listmealpage': (context) => const Listmealpage(), // Add this line

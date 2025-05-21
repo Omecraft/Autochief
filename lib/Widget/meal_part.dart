@@ -1,5 +1,6 @@
 import 'package:autochiefv2/Data/datameal.dart';
 import 'package:autochiefv2/Data/mealdatabase.dart'; // Add this import
+import 'package:autochiefv2/Page/add_meal.dart';
 import 'package:flutter/material.dart';
 
 class MealPart extends StatefulWidget {
@@ -93,25 +94,35 @@ class _MealPartState extends State<MealPart> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFffb17a),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.edit, color: Color(0xFF242739)),
-                      SizedBox(width: 8),
-                      Text(
-                        'Modify',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Color(0xFF242739),
-                          fontWeight: FontWeight.bold,
-                        ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddMealPage(meal: widget.meal),
                       ),
-                    ],
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFffb17a),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.edit, color: Color(0xFF242739)),
+                        SizedBox(width: 8),
+                        Text(
+                          'Modify',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFF242739),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Container(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:autochiefv2/Data/mealdatabase.dart';
 import 'package:provider/provider.dart';
+import '../constants.dart';
 
 class MealResume extends StatefulWidget {
   const MealResume({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _MealResumeState extends State<MealResume> {
         width: MediaQuery.of(context).size.width * 0.93,
         height: 120,
         decoration: BoxDecoration(
-          color: const Color(0xFF333650),
+          color: widgetcolor,
           borderRadius: BorderRadius.circular(10), 
         ),
         child: Padding(
